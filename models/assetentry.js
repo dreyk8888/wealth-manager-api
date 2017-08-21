@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 
 var AssetEntrySchema = new mongoose.Schema({
-  assetType: String,
-  assetName: String,
+  class: String,
+  name: String,
   units: Number,
   unitCost: Number,
   amount: Number,   //this will be calculated from units X unitCost
-  category: String,
+  location: String,
   date_purchased: { type: Date, default: Date.now },
   currency: String,
 

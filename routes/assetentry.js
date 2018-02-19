@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
 /* PUT /assetentry/:id */
 //findByIdAndUpdate is a mongoose function
 router.put('/:id', function(req, res, next) {
-  AssetEntry.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  AssetEntry.findByIdAndUpdate(req.params.id, req.body, , {new: true}, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });

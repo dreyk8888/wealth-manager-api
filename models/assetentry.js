@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var AssetEntrySchema = new mongoose.Schema({
+  userId: {type: String, default: ""},
   class: {type: String, default: ""},
   name: {type: String, default: ""},
   units: {type: Number, default: 0},

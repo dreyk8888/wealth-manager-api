@@ -3,20 +3,31 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var DebtEntry = require('../models/debtentry.js');
 
+module.exports = router;
+
+
 /* GET /debtentry listing. */
+
 router.get('/', function(req, res, next) {
   DebtEntry.find(function (err, debts) {
     if (err) return next(err);
     res.json(debts);
   });
 });
-module.exports = router;
 
 /* GET /debtentry/id */
 router.get('/:id', function(req, res, next) {
   DebtEntry.findById(req.params.id, function (err, post) {
     if (err) return next(err);
     res.json(post);
+  });
+});
+
+/*GET by user Id */
+router.get('/', function(req, res, next) {
+  DebtEntry.find({user: req.query.userId}, function (err, debts) {
+    if (err) return next(err);
+    res.json(debts);
   });
 });
 

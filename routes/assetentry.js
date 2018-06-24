@@ -12,9 +12,18 @@ router.get('/', function(req, res, next) {
 });
 module.exports = router;
 
-/* GET /todos/id */
+/* GET /id */
 router.get('/:id', function(req, res, next) {
   AssetEntry.findById(req.params.id, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+
+/*GET by user Id */
+router.get('/', function(req, res, next) {
+  AssetEntry.find({user: req.query.userId}, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
